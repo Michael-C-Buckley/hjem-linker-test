@@ -9,5 +9,13 @@
 
   hjem.users.tester = {
     enable = true;
+
+    files = {
+      ".config/fish/config.fish".text = ''
+        set -g fish_greeting
+        echo "--- Hjem Testing ---"
+        alias sd='sudo shutdown now'
+      '';
+    };
   };
 }

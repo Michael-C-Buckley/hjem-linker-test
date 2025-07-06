@@ -1,7 +1,6 @@
 _: {
   microvm = {
-    hypervisor = "qemu";
-    socket = "control.socket";
+    hypervisor = "crosvm"; # Lightweight and fast for testing
 
     # Use the the local host's store
     shares = [
