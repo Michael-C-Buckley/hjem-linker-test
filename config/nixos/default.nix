@@ -1,5 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
+    inputs.hjem.nixosModules.default
     # Test User Settings
     ./tester.nix
   ];
@@ -19,9 +24,16 @@
     wheelNeedsPassword = false;
   };
 
+  services.getty.autologinUser = "tester";
+
   # Use sane nix settings
   nix = {
     package = pkgs.nixVersions.latest;
     settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
+  };
+
+  hjem = {
+    clobberByDefault = true;
+    #linker = "";
   };
 }

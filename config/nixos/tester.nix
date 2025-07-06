@@ -6,4 +6,8 @@
     password = "";
     shell = pkgs.fish;
   };
+
+  hjem.users.tester = {
+    enable = true;
+  };
 }
