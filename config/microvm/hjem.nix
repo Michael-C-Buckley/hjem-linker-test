@@ -1,0 +1,3 @@
+{microvm, ...}: {
+        networking.hostName = "";
+}
