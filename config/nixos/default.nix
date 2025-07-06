@@ -6,13 +6,14 @@
   imports = [
     inputs.hjem.nixosModules.default
     # Test User Settings
-    ./users.nix
+    ./users
   ];
 
   system.stateVersion = "25.11";
+
   programs.fish = {
     enable = true;
-    shellAliases.sd = "shutdown now";
+    shellAliases.sd = "sudo shutdown now";
   };
 
   environment.systemPackages = with pkgs; [
@@ -32,10 +33,5 @@
   nix = {
     package = pkgs.nixVersions.latest;
     settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
-  };
-
-  hjem = {
-    clobberByDefault = true;
-    linker = pkgs.smfh;
   };
 }
