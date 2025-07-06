@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./tester.nix
+  ];
+
   system.stateVersion = "25.11";
   programs.fish.enable = true;
 
@@ -7,13 +11,13 @@
     vim
   ];
 
-  users.users = {
-    tester = {
-      isNormalUser = true;
-      extraGroups = ["wheel"];
-      password = "";
+  users.users.root.password = "";
+
+  security = {
+    sudo = {
+      extraConfig = "Defaults lecture=never";
+      wheelNeedsPassword = false;
     };
-    root.password = "";
   };
 
   # Use sane nix settings
