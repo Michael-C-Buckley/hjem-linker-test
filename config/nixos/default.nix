@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    # Test User Settings
     ./tester.nix
   ];
 
@@ -13,19 +14,14 @@
 
   users.users.root.password = "";
 
-  security = {
-    sudo = {
-      extraConfig = "Defaults lecture=never";
-      wheelNeedsPassword = false;
-    };
+  security.sudo = {
+    extraConfig = "Defaults lecture=never";
+    wheelNeedsPassword = false;
   };
 
   # Use sane nix settings
   nix = {
     package = pkgs.nixVersions.latest;
-    settings = {
-      warn-dirty = false;
-      experimental-features = ["nix-command" "flakes" "pipe-operators"];
-    };
+    settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
   };
 }
