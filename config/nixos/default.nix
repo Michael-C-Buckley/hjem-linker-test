@@ -6,15 +6,13 @@
   imports = [
     inputs.hjem.nixosModules.default
     # Test User Settings
-    ./tester.nix
+    ./users.nix
   ];
 
   system.stateVersion = "25.11";
   programs.fish = {
     enable = true;
-    shellAliases = {
-      sd = "sudo shutdown now";
-    };
+    shellAliases.sd = "shutdown now";
   };
 
   environment.systemPackages = with pkgs; [
@@ -23,14 +21,12 @@
     starship
   ];
 
-  users.users.root.password = "";
-
   security.sudo = {
     extraConfig = "Defaults lecture=never";
     wheelNeedsPassword = false;
   };
 
-  services.getty.autologinUser = "tester";
+  services.getty.autologinUser = "root";
 
   # Use sane nix settings
   nix = {

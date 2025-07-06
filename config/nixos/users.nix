@@ -1,13 +1,11 @@
 # User settings for `tester` local system account
 {pkgs, ...}: {
-  users.users.tester = {
-    isNormalUser = true;
-    extraGroups = ["wheel"];
+  users.users.root = {
     password = "";
     shell = pkgs.fish;
   };
 
-  hjem.users.tester = {
+  hjem.users.root = {
     enable = true;
 
     files = {

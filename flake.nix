@@ -60,11 +60,14 @@
     });
 
     packages = forAllSystems (system: {
-      default = self.nixosConfigurations.hjem.config.microvm.declaredRunner;
+      default = self.packages.${system}.hjem;
+      hjem = self.nixosConfigurations.hjem.config.microvm.declaredRunner;
+      persist = self.nixosConfigurations.persist.config.microvm.declaredRunner;
     });
 
     nixosConfigurations = {
       hjem = mkVM [];
+      persist = mkVM [./config/microvm/persist.nix];
     };
   };
 }
