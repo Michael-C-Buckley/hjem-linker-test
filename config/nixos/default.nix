@@ -10,11 +10,17 @@
   ];
 
   system.stateVersion = "25.11";
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      sd = "sudo shutdown now";
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     microfetch
     vim
+    starship
   ];
 
   users.users.root.password = "";
