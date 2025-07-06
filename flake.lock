@@ -83,7 +83,11 @@
       "inputs": {
         "hjem": "hjem",
         "microvm": "microvm",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "smfh": [
+          "hjem",
+          "smfh"
+        ]
       }
     },
     "rust-overlay": {

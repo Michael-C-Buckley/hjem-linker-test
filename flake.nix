@@ -11,21 +11,26 @@
       url = "git+https://github.com/Michael-C-Buckley/hjem?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    smfh.follows = "hjem/smfh";
   };
 
   outputs = {
     self,
     nixpkgs,
     microvm,
+    smfh,
     ...
   } @ inputs: let
     systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
 
     forAllSystems = nixpkgs.lib.genAttrs systems;
-    importPkgs = system:
+    importPkgs = system: let
+      addSmfh = final: prev: {inherit (smfh.packages.${system}) smfh;};
+    in
       import nixpkgs {
         inherit system;
         config = {allowUnfree = true;};
+        overlays = [addSmfh];
       };
 
     system = "x86_64-linux"; # I am testing from an X86 systems

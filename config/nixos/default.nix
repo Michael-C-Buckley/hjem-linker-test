@@ -34,6 +34,6 @@
 
   hjem = {
     clobberByDefault = true;
-    #linker = "";
+    linker = pkgs.smfh;
   };
 }
