@@ -20,6 +20,7 @@
     microfetch
     vim
     starship
+    tree
   ];
 
   security.sudo = {
@@ -27,7 +28,7 @@
     wheelNeedsPassword = false;
   };
 
-  services.getty.autologinUser = "root";
+  services.getty.autologinUser = "user";
 
   # Use sane nix settings
   nix = {

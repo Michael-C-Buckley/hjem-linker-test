@@ -10,7 +10,12 @@
 in {
   users.users = {
     root = defaults;
-    user = {isNormalUser = true;} // defaults;
+    user =
+      {
+        isNormalUser = true;
+        extraGroups = ["wheel"];
+      }
+      // defaults;
   };
   hjem = {
     clobberByDefault = true;
